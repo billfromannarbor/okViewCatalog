@@ -20,14 +20,8 @@
     NSString *projectDir = @"/Users/hei396/learning/okViewCatalog";
     OKViewCatalog *okViewCatalog = [[OKViewCatalog alloc] init];
     NSDictionary *dictionaryOfClassfiles = [okViewCatalog getAListOfAllClassImplementationFilesInXCodeDirectory:projectDir];
-    for (NSString *classKey in dictionaryOfClassfiles) {
-        NSDictionary *dictionaryOfFiles= dictionaryOfClassfiles[classKey];
-        for (NSString *fileType in dictionaryOfFiles) {
-            NSString *filePath= dictionaryOfFiles[fileType];
-            NSLog(@"file: %@ for type: %@", filePath, fileType);
-        }
-    }
     XCTAssert(dictionaryOfClassfiles!=nil);
+    [self logTheClassDictionary:dictionaryOfClassfiles];
     
 }
 
@@ -54,4 +48,14 @@
     XCTAssert(false, @"not implemented");
 }
 
+- (void) logTheClassDictionary: (NSDictionary *) classDictionary {
+    for (NSString *classKey in classDictionary) {
+        NSDictionary *dictionaryOfFiles= classDictionary[classKey];
+        NSLog(@"Class %@", classKey);
+        for (NSString *fileType in dictionaryOfFiles) {
+            NSString *filePath= dictionaryOfFiles[fileType];
+            NSLog(@"   filePath %@", filePath);
+        }
+    }
+}
 @end
