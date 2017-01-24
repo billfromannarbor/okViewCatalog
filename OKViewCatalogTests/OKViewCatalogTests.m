@@ -17,9 +17,18 @@
 
 
 - (void)testIterateThroughAllClassImplementationFilesInAnXCodeDirectory {
-    OKViewCatalog* testViewCatalog = [[OKViewCatalog alloc] init];
-    id classList = [testViewCatalog getAListOfAllClassImplementationFilesInXCodeDirectory:nil];
-    XCTAssert(classList!=nil);
+    NSString *docsDir = [NSHomeDirectory() stringByAppendingPathComponent:  @"Documents"];
+    NSFileManager *localFileManager=[[NSFileManager alloc] init];
+    NSDirectoryEnumerator *dirEnum = [localFileManager enumeratorAtPath:docsDir];
+    
+    NSString *file;
+    while ((file = [dirEnum nextObject])) {
+        if ([[file pathExtension] isEqualToString: @"doc"]) {
+            // process the document
+            NSLog(@"%@", [docsDir stringByAppendingPathComponent:file]);
+            //[self scanDocument: [docsDir stringByAppendingPathComponent:file]];
+        }
+    }
 }
 
 - (void)testFindUIViewClassDeclarationInClassImplementationFile {

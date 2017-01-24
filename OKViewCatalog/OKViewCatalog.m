@@ -13,8 +13,14 @@
     //Some Java Doc Here
     //@Method I'm a method
 
--(NSDictionary *) getAListOfAllClassImplementationFilesInXCodeDirectory: (NSObject *) dog {
-    return nil;
+-(NSDictionary *) getAListOfAllClassImplementationFilesInXCodeDirectory: (NSURL *) xcodeDirectory {
+    //NSDirectoryEnumerator * directoryEnumerator = [[NSDirectoryEnumerator alloc] init];
+    if ([xcodeDirectory hasDirectoryPath]) {
+        return [[NSDictionary alloc] init];
+    }
+    else {
+        return nil;
+    }
 }
 
 @end
