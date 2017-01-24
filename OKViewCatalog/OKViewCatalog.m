@@ -7,11 +7,17 @@
 //
 
 #import "OKViewCatalog.h"
+#import <objc/runtime.h>
+
 
 @implementation OKViewCatalog
 
-    //Some Java Doc Here
-    //@Method I'm a method
+-(NSArray*) getAListOfAllUIViewClasses {
+    NSMutableArray* viewClasses=[[NSMutableArray alloc]init];
+    [viewClasses addObject:@"UIView"];
+    [viewClasses addObject:@"NSControl"];
+    return viewClasses;
+}
 
 -(NSDictionary *) getAListOfAllClassImplementationFilesInXCodeDirectory: (NSString *) xcodeDirectory {
     NSFileManager *localFileManager=[[NSFileManager alloc] init];
@@ -42,17 +48,20 @@
     return classDictionary;
 }
 
--(NSArray* ) findUIViewObjectDeclarationsInClassFile: (NSString* )filePath {
-    NSMutableArray* viewObjectDeclarations= [[NSMutableArray alloc ]init];
+-(NSArray* ) findObjectDeclarations: (NSDictionary *) classList classFiles:(NSDictionary* )classFiles {
+    //Enumerate through the classFiles
+    //Check the h and m files for declarations
+    
+//    NSMutableArray* viewObjectDeclarations= [[NSMutableArray alloc ]init];
     //Load the class file
-    NSString * fileContents = [NSString stringWithString:filePath];
+//    NSString * fileContents = [NSString stringWithString:filePath];
     //Search for declarations of UIView* or other UIView derivitives
-    NSRange rangeOfView = [fileContents rangeOfString:@"UIView"];
-    if ( rangeOfView.location!= NSNotFound) {
-        NSLog(@"string contains bla!");
-    }
+//    NSRange rangeOfView = [fileContents rangeOfString:@"UIView"];
+//    if ( rangeOfView.location!= NSNotFound) {
+//        NSLog(@"string contains bla!");
+//    }
     //Return a list of file nav links
-    return viewObjectDeclarations;
+    return nil;
 }
 
 -(BOOL) writeDictionary: (NSString *) path dictionary: (NSDictionary*) dictionary {
@@ -60,21 +69,5 @@
     return [dictionary writeToFile:filePath atomically:TRUE];
 }
 
-@end
 
-/*
- 
- NSString *file;
- NSLog(@"Enumerating Directory: %@", projectDir);
- while ((file = [dirEnum nextObject])) {
- if ([[file pathExtension] isEqualToString: @"m"]) {
- NSLog(@"Objective C class file: %@", file);
- }
- else if ([[file pathExtension] isEqualToString: @"h"]) {
- NSLog(@"Header file: %@", file);
- }
- else {
- //NSLog(@"Other File: %@", file);
- }
- }
-*/
+@end

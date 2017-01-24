@@ -20,24 +20,21 @@ NSString * _projectDir;
     [super setUp];
      _projectDir = @"/Users/hei396/learning/okViewCatalog";
 }
-
 - (void)testGetAListOfAllClassImplementationFilesInXCodeDirectory {
     OKViewCatalog *okViewCatalog = [[OKViewCatalog alloc] init];
     NSDictionary *dictionaryOfClassfiles = [okViewCatalog getAListOfAllClassImplementationFilesInXCodeDirectory:_projectDir];
     XCTAssert(dictionaryOfClassfiles!=nil);
 }
 
-- (void)testFindUIViewClassDeclarationInClassImplementationFile {
-    OKViewCatalog *okViewCatalog = [[OKViewCatalog alloc] init];
-    NSDictionary *dictionaryOfClassfiles = [okViewCatalog getAListOfAllClassImplementationFilesInXCodeDirectory:_projectDir];
-    NSString *className = [dictionaryOfClassfiles allKeys][0];
-    NSArray* viewObjectDeclarations = [okViewCatalog findUIViewObjectDeclarationsInClassFile: className];
-    
-    XCTAssert(viewObjectDeclarations!=nil, @"viewObjectDeclarations array is nil");
-}
 
 - (void)testIdentifyAllClassImplementationFilesThatAreViews {
    
+}
+
+- (void) testGetAListOfAllUIViewSubclasses {
+    OKViewCatalog *okViewCatalog = [[OKViewCatalog alloc] init];
+    NSArray* listOfUIViewSubclasses = [okViewCatalog getAListOfAllUIViewClasses];
+    XCTAssert(listOfUIViewSubclasses!=nil);
 }
 
 - (void)testStoreDataInpListFile {
