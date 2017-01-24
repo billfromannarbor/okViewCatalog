@@ -26,6 +26,7 @@
 }
 
 - (void)testFindUIViewClassDeclarationInClassImplementationFile {
+    
     XCTAssert(false, @"not implemented");
 }
 
@@ -34,13 +35,14 @@
    
 }
 
-- (void)testLinkWithAnExternalProject {
-    XCTAssert(false, @"not implemented");
-    
-}
-
 - (void)testStoreDataInpListFile {
-    XCTAssert(false, @"not implemented");
+    NSString *projectDir = @"/Users/hei396/learning/okViewCatalog";
+    OKViewCatalog *okViewCatalog = [[OKViewCatalog alloc] init];
+    NSDictionary *dictionaryOfClassfiles = [okViewCatalog getAListOfAllClassImplementationFilesInXCodeDirectory:projectDir];
+    XCTAssert(dictionaryOfClassfiles!=nil);
+    
+    BOOL success = [okViewCatalog writeDictionary:projectDir dictionary:dictionaryOfClassfiles];
+    XCTAssert(success);
     
 }
 

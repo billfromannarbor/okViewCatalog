@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface OKViewCatalog : NSObject
--(NSDictionary *) getAListOfAllClassImplementationFilesInXCodeDirectory: (NSObject *) dog;
+-(NSDictionary *) getAListOfAllClassImplementationFilesInXCodeDirectory: (NSString *) xcodeDirectory;
+-(BOOL) writeDictionary: (NSString *) path dictionary: (NSDictionary*) dictionary;
 @end

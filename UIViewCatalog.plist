@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>OKViewCatalog/AppDelegate</key>
+	<dict>
+		<key>Class</key>
+		<string>OKViewCatalog/AppDelegate.m</string>
+		<key>Header</key>
+		<string>OKViewCatalog/AppDelegate.h</string>
+	</dict>
+	<key>OKViewCatalog/OKViewCatalog</key>
+	<dict>
+		<key>Class</key>
+		<string>OKViewCatalog/OKViewCatalog.m</string>
+		<key>Header</key>
+		<string>OKViewCatalog/OKViewCatalog.h</string>
+	</dict>
+	<key>OKViewCatalog/OKViewCatalogViewController</key>
+	<dict>
+		<key>Class</key>
+		<string>OKViewCatalog/OKViewCatalogViewController.m</string>
+		<key>Header</key>
+		<string>OKViewCatalog/OKViewCatalogViewController.h</string>
+	</dict>
+	<key>OKViewCatalog/main</key>
+	<dict>
+		<key>Class</key>
+		<string>OKViewCatalog/main.m</string>
+	</dict>
+	<key>OKViewCatalogTests/OKViewCatalogTests</key>
+	<dict>
+		<key>Class</key>
+		<string>OKViewCatalogTests/OKViewCatalogTests.m</string>
+	</dict>
+	<key>OKViewCatalogUITests/OKViewCatalogUITests</key>
+	<dict>
+		<key>Class</key>
+		<string>OKViewCatalogUITests/OKViewCatalogUITests.m</string>
+	</dict>
+</dict>
+</plist>

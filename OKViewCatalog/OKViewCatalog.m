@@ -42,6 +42,11 @@
     return classDictionary;
 }
 
+-(BOOL) writeDictionary: (NSString *) path dictionary: (NSDictionary*) dictionary {
+    NSString * filePath = [NSString stringWithFormat:@"%@/UIViewCatalog.plist", path];
+    return [dictionary writeToFile:filePath atomically:TRUE];
+}
+
 @end
 
 /*
