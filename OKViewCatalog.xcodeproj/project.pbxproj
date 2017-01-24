@@ -15,6 +15,7 @@
 		CA7111A41E36C16800BB82E8 /* OKViewCatalogTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA7111A31E36C16800BB82E8 /* OKViewCatalogTests.m */; };
 		CA7111AF1E36C16800BB82E8 /* OKViewCatalogUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA7111AE1E36C16800BB82E8 /* OKViewCatalogUITests.m */; };
 		CA7111BE1E36C41300BB82E8 /* OKViewCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = CA7111BD1E36C41300BB82E8 /* OKViewCatalog.m */; };
+		FE6BE5FD1E37BA4400DDBD1D /* UIViewCatalog.plist in Resources */ = {isa = PBXBuildFile; fileRef = FE6BE5FC1E37BA4400DDBD1D /* UIViewCatalog.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,8 @@
 		CA7111B01E36C16800BB82E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA7111BC1E36C41300BB82E8 /* OKViewCatalog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKViewCatalog.h; sourceTree = "<group>"; };
 		CA7111BD1E36C41300BB82E8 /* OKViewCatalog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKViewCatalog.m; sourceTree = "<group>"; };
+		FE6BE5F91E37B88100DDBD1D /* TestFileForFindClassDeclarationInFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestFileForFindClassDeclarationInFile.m; sourceTree = "<group>"; };
+		FE6BE5FC1E37BA4400DDBD1D /* UIViewCatalog.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = UIViewCatalog.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +85,7 @@
 		CA7111801E36C16800BB82E8 = {
 			isa = PBXGroup;
 			children = (
+				FE6BE5FC1E37BA4400DDBD1D /* UIViewCatalog.plist */,
 				CA71118B1E36C16800BB82E8 /* OKViewCatalog */,
 				CA7111A21E36C16800BB82E8 /* OKViewCatalogTests */,
 				CA7111AD1E36C16800BB82E8 /* OKViewCatalogUITests */,
@@ -129,6 +133,7 @@
 			children = (
 				CA7111A31E36C16800BB82E8 /* OKViewCatalogTests.m */,
 				CA7111A51E36C16800BB82E8 /* Info.plist */,
+				FE6BE5FB1E37B89200DDBD1D /* Test Files */,
 			);
 			path = OKViewCatalogTests;
 			sourceTree = "<group>";
@@ -140,6 +145,14 @@
 				CA7111B01E36C16800BB82E8 /* Info.plist */,
 			);
 			path = OKViewCatalogUITests;
+			sourceTree = "<group>";
+		};
+		FE6BE5FB1E37B89200DDBD1D /* Test Files */ = {
+			isa = PBXGroup;
+			children = (
+				FE6BE5F91E37B88100DDBD1D /* TestFileForFindClassDeclarationInFile.m */,
+			);
+			name = "Test Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,6 +273,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE6BE5FD1E37BA4400DDBD1D /* UIViewCatalog.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

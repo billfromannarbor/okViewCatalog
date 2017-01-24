@@ -42,6 +42,19 @@
     return classDictionary;
 }
 
+-(NSArray* ) findUIViewObjectDeclarationsInClassFile: (NSString* )filePath {
+    NSMutableArray* viewObjectDeclarations= [[NSMutableArray alloc ]init];
+    //Load the class file
+    NSString * fileContents = [NSString stringWithString:filePath];
+    //Search for declarations of UIView* or other UIView derivitives
+    NSRange rangeOfView = [fileContents rangeOfString:@"UIView"];
+    if ( rangeOfView.location!= NSNotFound) {
+        NSLog(@"string contains bla!");
+    }
+    //Return a list of file nav links
+    return viewObjectDeclarations;
+}
+
 -(BOOL) writeDictionary: (NSString *) path dictionary: (NSDictionary*) dictionary {
     NSString * filePath = [NSString stringWithFormat:@"%@/UIViewCatalog.plist", path];
     return [dictionary writeToFile:filePath atomically:TRUE];

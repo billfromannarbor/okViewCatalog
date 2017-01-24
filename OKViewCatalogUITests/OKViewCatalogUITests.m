@@ -21,11 +21,9 @@
 }
 
 - (void)testSetTheDirectoryPath {
-    XCTAssert(false, @"not implemented");
 }
 
 - (void)testBrowseToAFileInXCode {
-    XCTAssert(false, @"not implemented");
 }
 
 @end

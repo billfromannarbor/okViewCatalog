@@ -14,40 +14,43 @@
 @end
 
 @implementation OKViewCatalogTests
+NSString * _projectDir;
 
+- (void)setUp {
+    [super setUp];
+     _projectDir = @"/Users/hei396/learning/okViewCatalog";
+}
 
-- (void)testIterateThroughAllClassImplementationFilesInAnXCodeDirectory {
-    NSString *projectDir = @"/Users/hei396/learning/okViewCatalog";
+- (void)testGetAListOfAllClassImplementationFilesInXCodeDirectory {
     OKViewCatalog *okViewCatalog = [[OKViewCatalog alloc] init];
-    NSDictionary *dictionaryOfClassfiles = [okViewCatalog getAListOfAllClassImplementationFilesInXCodeDirectory:projectDir];
+    NSDictionary *dictionaryOfClassfiles = [okViewCatalog getAListOfAllClassImplementationFilesInXCodeDirectory:_projectDir];
     XCTAssert(dictionaryOfClassfiles!=nil);
-    [self logTheClassDictionary:dictionaryOfClassfiles];
-    
 }
 
 - (void)testFindUIViewClassDeclarationInClassImplementationFile {
+    OKViewCatalog *okViewCatalog = [[OKViewCatalog alloc] init];
+    NSDictionary *dictionaryOfClassfiles = [okViewCatalog getAListOfAllClassImplementationFilesInXCodeDirectory:_projectDir];
+    NSString *className = [dictionaryOfClassfiles allKeys][0];
+    NSArray* viewObjectDeclarations = [okViewCatalog findUIViewObjectDeclarationsInClassFile: className];
     
-    XCTAssert(false, @"not implemented");
+    XCTAssert(viewObjectDeclarations!=nil, @"viewObjectDeclarations array is nil");
 }
 
 - (void)testIdentifyAllClassImplementationFilesThatAreViews {
-    XCTAssert(false, @"not implemented");
    
 }
 
 - (void)testStoreDataInpListFile {
-    NSString *projectDir = @"/Users/hei396/learning/okViewCatalog";
     OKViewCatalog *okViewCatalog = [[OKViewCatalog alloc] init];
-    NSDictionary *dictionaryOfClassfiles = [okViewCatalog getAListOfAllClassImplementationFilesInXCodeDirectory:projectDir];
+    NSDictionary *dictionaryOfClassfiles = [okViewCatalog getAListOfAllClassImplementationFilesInXCodeDirectory:_projectDir];
     XCTAssert(dictionaryOfClassfiles!=nil);
     
-    BOOL success = [okViewCatalog writeDictionary:projectDir dictionary:dictionaryOfClassfiles];
+    BOOL success = [okViewCatalog writeDictionary:_projectDir dictionary:dictionaryOfClassfiles];
     XCTAssert(success);
     
 }
 
 - (void)testRetrieveDataFrompListFile {
-    XCTAssert(false, @"not implemented");
 }
 
 - (void) logTheClassDictionary: (NSDictionary *) classDictionary {

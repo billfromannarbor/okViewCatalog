@@ -11,4 +11,5 @@
 @interface OKViewCatalog : NSObject
 -(NSDictionary *) getAListOfAllClassImplementationFilesInXCodeDirectory: (NSString *) xcodeDirectory;
 -(BOOL) writeDictionary: (NSString *) path dictionary: (NSDictionary*) dictionary;
+-(NSArray* ) findUIViewObjectDeclarationsInClassFile: (NSString* )filePath;
 @end

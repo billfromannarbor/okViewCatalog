@@ -33,6 +33,11 @@
 		<key>Class</key>
 		<string>OKViewCatalogTests/OKViewCatalogTests.m</string>
 	</dict>
+	<key>OKViewCatalogTests/TestFileForFindClassDeclarationInFile</key>
+	<dict>
+		<key>Class</key>
+		<string>OKViewCatalogTests/TestFileForFindClassDeclarationInFile.m</string>
+	</dict>
 	<key>OKViewCatalogUITests/OKViewCatalogUITests</key>
 	<dict>
 		<key>Class</key>
