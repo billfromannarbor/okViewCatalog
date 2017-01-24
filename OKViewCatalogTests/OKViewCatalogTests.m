@@ -17,18 +17,18 @@
 
 
 - (void)testIterateThroughAllClassImplementationFilesInAnXCodeDirectory {
-    NSString *docsDir = [NSHomeDirectory() stringByAppendingPathComponent:  @"Documents"];
-    NSFileManager *localFileManager=[[NSFileManager alloc] init];
-    NSDirectoryEnumerator *dirEnum = [localFileManager enumeratorAtPath:docsDir];
-    
-    NSString *file;
-    while ((file = [dirEnum nextObject])) {
-        if ([[file pathExtension] isEqualToString: @"doc"]) {
-            // process the document
-            NSLog(@"%@", [docsDir stringByAppendingPathComponent:file]);
-            //[self scanDocument: [docsDir stringByAppendingPathComponent:file]];
+    NSString *projectDir = @"/Users/hei396/learning/okViewCatalog";
+    OKViewCatalog *okViewCatalog = [[OKViewCatalog alloc] init];
+    NSDictionary *dictionaryOfClassfiles = [okViewCatalog getAListOfAllClassImplementationFilesInXCodeDirectory:projectDir];
+    for (NSString *classKey in dictionaryOfClassfiles) {
+        NSDictionary *dictionaryOfFiles= dictionaryOfClassfiles[classKey];
+        for (NSString *fileType in dictionaryOfFiles) {
+            NSString *filePath= dictionaryOfFiles[fileType];
+            NSLog(@"file: %@ for type: %@", filePath, fileType);
         }
     }
+    XCTAssert(dictionaryOfClassfiles!=nil);
+    
 }
 
 - (void)testFindUIViewClassDeclarationInClassImplementationFile {
@@ -52,7 +52,6 @@
 
 - (void)testRetrieveDataFrompListFile {
     XCTAssert(false, @"not implemented");
-    
 }
 
 @end
