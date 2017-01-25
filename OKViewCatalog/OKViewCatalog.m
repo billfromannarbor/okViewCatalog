@@ -14,6 +14,32 @@
 
 -(NSArray* ) findViewDeclarationsInSourceFiles: (NSArray *) listOfViewClasses sourceFiles:(NSDictionary* )sourceFiles {
     NSMutableArray* viewDeclarationsInSourceFiles = [[NSMutableArray alloc]init];
+    
+    for (NSString *classKey in sourceFiles) {
+        NSDictionary *dictionaryOfFiles= sourceFiles[classKey];
+        NSLog(@"Class %@", classKey);
+        for (NSString *fileType in dictionaryOfFiles) {
+            NSString *filePath= dictionaryOfFiles[fileType];
+            NSLog(@"FilePath: %@", filePath);
+            NSString *fileContents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+            NSLog(@"fileContents Length = %ld", fileContents.length);
+            NSRange searchRange = NSMakeRange(0, [fileContents length]);
+            for (NSString* viewClass in listOfViewClasses) {
+                NSRange viewClassFoundRange = [fileContents rangeOfString:fileContents options:NSLiteralSearch range:searchRange];
+                //while (viewClassFoundRange.location != NSNotFound) {
+                    NSLog(@"ViewClass:%@ is Located at:%ld,%ld in file:%@ ", viewClass, viewClassFoundRange.location,viewClassFoundRange.length, filePath);
+                    
+                    searchRange = NSMakeRange(viewClassFoundRange.location+viewClassFoundRange.length, [fileContents length]);
+                    viewClassFoundRange = [fileContents rangeOfString:fileContents options:NSLiteralSearch range:searchRange];
+                //}
+                //Search and store all matches in a new Dictionary
+                
+            }
+        }
+    }
+ 
+    
+    
     return viewDeclarationsInSourceFiles;
 }
 
