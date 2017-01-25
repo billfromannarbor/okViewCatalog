@@ -16,39 +16,52 @@
 @implementation OKViewCatalogTests
 NSString * _projectDir;
 
-- (void)setUp {
-    [super setUp];
-     _projectDir = @"/Users/hei396/learning/okViewCatalog";
-}
-- (void)testGetAListOfAllClassImplementationFilesInXCodeDirectory {
-    OKViewCatalog *okViewCatalog = [[OKViewCatalog alloc] init];
-    NSDictionary *dictionaryOfClassfiles = [okViewCatalog getAListOfAllClassImplementationFilesInXCodeDirectory:_projectDir];
-    XCTAssert(dictionaryOfClassfiles!=nil);
-}
-
 
 - (void)testIdentifyAllClassImplementationFilesThatAreViews {
+    
    
 }
 
-- (void) testGetAListOfAllUIViewSubclasses {
+- (void) testGetListOfViewClasses {
     OKViewCatalog *okViewCatalog = [[OKViewCatalog alloc] init];
-    NSArray* listOfUIViewSubclasses = [okViewCatalog getAListOfAllUIViewClasses];
+    NSArray* listOfUIViewSubclasses = [okViewCatalog getListOfViewClasses];
     XCTAssert(listOfUIViewSubclasses!=nil);
 }
 
-- (void)testStoreDataInpListFile {
+- (void)testPersistCatalog {
     OKViewCatalog *okViewCatalog = [[OKViewCatalog alloc] init];
-    NSDictionary *dictionaryOfClassfiles = [okViewCatalog getAListOfAllClassImplementationFilesInXCodeDirectory:_projectDir];
+    NSDictionary *dictionaryOfClassfiles = [okViewCatalog getSourceFilesFromXCodeDirectory:_projectDir];
     XCTAssert(dictionaryOfClassfiles!=nil);
     
-    BOOL success = [okViewCatalog writeDictionary:_projectDir dictionary:dictionaryOfClassfiles];
+    BOOL success = [okViewCatalog persistCatalog:_projectDir dictionary:dictionaryOfClassfiles];
     XCTAssert(success);
     
 }
 
-- (void)testRetrieveDataFrompListFile {
+- (void)testRetrievePersistedCatalog {
+    OKViewCatalog *okViewCatalog = [[OKViewCatalog alloc] init];
+    NSDictionary *dictionaryOfClassfiles = [okViewCatalog getSourceFilesFromXCodeDirectory:_projectDir];
+    XCTAssert(dictionaryOfClassfiles!=nil);
+    
+    BOOL success = [okViewCatalog persistCatalog:_projectDir dictionary:dictionaryOfClassfiles];
+    XCTAssert(success);
+    
+    NSDictionary *dictionaryFrompListFile = [okViewCatalog getPersistedCatalog: _projectDir];
+    XCTAssert(dictionaryFrompListFile!=nil);
 }
+
+- (void)testGetSourceFilesFromXCodeDirectory {
+    OKViewCatalog *okViewCatalog = [[OKViewCatalog alloc] init];
+    NSDictionary *dictionaryOfSourceFiles = [okViewCatalog getSourceFilesFromXCodeDirectory:_projectDir];
+    XCTAssert(dictionaryOfSourceFiles!=nil);
+}
+
+- (void)setUp {
+    [super setUp];
+    _projectDir = @"/Users/hei396/learning/okViewCatalog";
+}
+
+//Helper Methods
 
 - (void) logTheClassDictionary: (NSDictionary *) classDictionary {
     for (NSString *classKey in classDictionary) {
@@ -60,4 +73,6 @@ NSString * _projectDir;
         }
     }
 }
+
+
 @end

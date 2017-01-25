@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface OKViewCatalog : NSObject
--(NSDictionary *) getAListOfAllClassImplementationFilesInXCodeDirectory: (NSString *) xcodeDirectory;
--(BOOL) writeDictionary: (NSString *) path dictionary: (NSDictionary*) dictionary;
--(NSArray* ) findObjectDeclarations: (NSDictionary *) classList classFiles:(NSDictionary* )classFiles;
--(NSArray*) getAListOfAllUIViewClasses;
+-(NSArray* ) findViewDeclarationsInSourceFiles: (NSArray *) listOfViewClasses sourceFiles:(NSDictionary* )sourceFiles;
+-(NSDictionary *) getSourceFilesFromXCodeDirectory:(NSString *) xcodeDirectory;
+-(NSArray*) getListOfViewClasses;
+-(BOOL) persistCatalog: (NSString *) path dictionary: (NSDictionary*) dictionary;
+-(NSDictionary *) getPersistedCatalog: (NSString *) path ;
 @end

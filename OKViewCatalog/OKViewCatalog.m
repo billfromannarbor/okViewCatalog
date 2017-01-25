@@ -12,14 +12,23 @@
 
 @implementation OKViewCatalog
 
--(NSArray*) getAListOfAllUIViewClasses {
-    NSMutableArray* viewClasses=[[NSMutableArray alloc]init];
-    [viewClasses addObject:@"UIView"];
-    [viewClasses addObject:@"NSControl"];
-    return viewClasses;
+-(NSArray* ) findViewDeclarationsInSourceFiles: (NSArray *) listOfViewClasses sourceFiles:(NSDictionary* )sourceFiles {
+    //Enumerate through the classFiles
+    //Check the h and m files for declarations
+    
+    //    NSMutableArray* viewObjectDeclarations= [[NSMutableArray alloc ]init];
+    //Load the class file
+    //    NSString * fileContents = [NSString stringWithString:filePath];
+    //Search for declarations of UIView* or other UIView derivitives
+    //    NSRange rangeOfView = [fileContents rangeOfString:@"UIView"];
+    //    if ( rangeOfView.location!= NSNotFound) {
+    //        NSLog(@"string contains bla!");
+    //    }
+    //Return a list of file nav links
+    return nil;
 }
 
--(NSDictionary *) getAListOfAllClassImplementationFilesInXCodeDirectory: (NSString *) xcodeDirectory {
+-(NSDictionary *) getSourceFilesFromXCodeDirectory:(NSString *) xcodeDirectory {
     NSFileManager *localFileManager=[[NSFileManager alloc] init];
     NSDirectoryEnumerator *directoryEnumerator = [localFileManager enumeratorAtPath:xcodeDirectory];
     NSString *file;
@@ -48,25 +57,23 @@
     return classDictionary;
 }
 
--(NSArray* ) findObjectDeclarations: (NSDictionary *) classList classFiles:(NSDictionary* )classFiles {
-    //Enumerate through the classFiles
-    //Check the h and m files for declarations
-    
-//    NSMutableArray* viewObjectDeclarations= [[NSMutableArray alloc ]init];
-    //Load the class file
-//    NSString * fileContents = [NSString stringWithString:filePath];
-    //Search for declarations of UIView* or other UIView derivitives
-//    NSRange rangeOfView = [fileContents rangeOfString:@"UIView"];
-//    if ( rangeOfView.location!= NSNotFound) {
-//        NSLog(@"string contains bla!");
-//    }
-    //Return a list of file nav links
-    return nil;
-}
-
--(BOOL) writeDictionary: (NSString *) path dictionary: (NSDictionary*) dictionary {
+-(BOOL) persistCatalog: (NSString *) path dictionary: (NSDictionary*) dictionary {
     NSString * filePath = [NSString stringWithFormat:@"%@/UIViewCatalog.plist", path];
     return [dictionary writeToFile:filePath atomically:TRUE];
+}
+
+-(NSDictionary *) getPersistedCatalog: (NSString *) path  {
+    NSString * filePath = [NSString stringWithFormat:@"%@/UIViewCatalog.plist", path];
+    NSDictionary* dictionary = [NSDictionary dictionaryWithContentsOfFile:filePath];
+    return dictionary;
+    
+}
+
+-(NSArray*) getListOfViewClasses {
+    NSMutableArray* viewClasses=[[NSMutableArray alloc]init];
+    [viewClasses addObject:@"UIView"];
+    [viewClasses addObject:@"NSControl"];
+    return viewClasses;
 }
 
 
