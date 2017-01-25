@@ -17,15 +17,19 @@
 NSString * _projectDir;
 
 
-- (void)testIdentifyAllClassImplementationFilesThatAreViews {
+- (void)testFindViewDeclarationsInSourceFiles {
+    OKViewCatalog* okViewCatalog = [[OKViewCatalog alloc]init];
+    NSDictionary *dictionaryOfSourceFiles = [okViewCatalog getSourceFilesFromXCodeDirectory:_projectDir];
+    NSArray* listOfViewClasses = [okViewCatalog getListOfViewClasses];
+    NSArray* viewDeclarations = [okViewCatalog findViewDeclarationsInSourceFiles:listOfViewClasses sourceFiles:dictionaryOfSourceFiles];
     
-   
+    XCTAssert(viewDeclarations!=nil);
 }
 
 - (void) testGetListOfViewClasses {
     OKViewCatalog *okViewCatalog = [[OKViewCatalog alloc] init];
-    NSArray* listOfUIViewSubclasses = [okViewCatalog getListOfViewClasses];
-    XCTAssert(listOfUIViewSubclasses!=nil);
+    NSArray* listOfViewClasses = [okViewCatalog getListOfViewClasses];
+    XCTAssert(listOfViewClasses!=nil);
 }
 
 - (void)testPersistCatalog {
